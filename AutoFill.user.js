@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         繁琐测评自动选择
 // @namespace    http://tampermonkey.net/
-// @version      v1.3
+// @version      v1.4
 // @description  每次更新基本以题库添加为主
 // @author       QinChains
 // @include      *://*ceping*
