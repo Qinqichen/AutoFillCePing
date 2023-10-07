@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         AutoFill
 // @namespace    http://tampermonkey.net/
-// @version      v1.3
+// @version      v1.5
 // @description  每次更新基本以题库添加为主
 // @author       QinChains
 // @include      *://*ceping*
@@ -369,6 +369,9 @@ function getAnswer(question){
         "当别人的风头盖过我时，我就觉得不舒服":"非常不符合",
         "我相信我能够解决好遇到的问题":"非常符合",
         "听到跟我不一样的想法，我的第一反应是“没有我的想法好”":"非常不符合",
+        "我宁愿自己一个人做事，也不要和别人在一起做":"非常不符合",
+        "我有些时候难以控制地想做很多事，忙东忙西，但最后一件事也没做成":"非常不符合",
+        "自己给自己打完气，也很快消沉下去":"非常不符合",
 
     };
 
