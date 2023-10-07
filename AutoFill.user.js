@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         繁琐测评自动选择
+// @name         AutoFill
 // @namespace    http://tampermonkey.net/
-// @version      v1.4
+// @version      v1.3
 // @description  每次更新基本以题库添加为主
 // @author       QinChains
 // @include      *://*ceping*
@@ -17,10 +17,16 @@
 let div=document.createElement("div");
 div.innerHTML='<div id="start_start" class="phoenix-button practice-note-btn" style="position: absolute;top: 100px;right: 50px;"><div class="phoenix-button__wraper phoenix-button__wraper--middle phoenix-button__wraper--primary "><div class="phoenix-button__content">开始答题</div></div></div>';
 
+let div2=document.createElement("div");
+div2.innerHTML='<div id="start_start2" class="phoenix-button practice-note-btn" style="position: absolute;top: 200px;right: 50px;"><div class="phoenix-button__wraper phoenix-button__wraper--middle phoenix-button__wraper--primary "><div class="phoenix-button__content">拖拽答题</div></div></div>';
+
+
+
 let textShow=document.createElement("div");
-textShow.innerHTML='<div id="start_show" class="phoenix-button practice-note-btn" style="position: absolute;top: 200px;right: 50px;width: 100px;">展示信息:该题目不存在答案</div>';
+textShow.innerHTML='<div id="start_show" class="phoenix-button practice-note-btn" style="position: absolute;top: 300px;right: 50px;width: 100px;">展示信息:该题目不存在答案</div>';
 
 document.body.append(div);
+document.body.append(div2);
 document.body.append(textShow);
 
 var showMessage = $("#start_show");
@@ -34,6 +40,14 @@ var showMessage = $("#start_show");
         messageInfo = autoClick();
         showMessage.text(messageInfo);
 
+    };
+
+    div2.onclick=function(event){
+        // messageInfo = autoDrag();
+        messageInfo = randomDrag();
+        showMessage.text(messageInfo);
+        // $(".phoenix-button__content").click();
+        setTimeout(function() { $(".phoenix-button__content").click(); }, 300)
     };
 
 
@@ -70,11 +84,99 @@ function autoClick(){
     return ans;
 }
 
-function autoFill(){
+
+function randomDrag(){
+
+    let option = $(".question-container").find("[data-cls='select-block__item']");
+    let optionList = option.children();
+
+    let rand = getRndInteger(0,2);
+
+    var idx = 0;
+
+    var ans = "";
+
+    optionList.each(function(){
+        var op = $(this);
+        log(op.find("span").html());
+
+        if (rand != idx ) {
+            op.click();
+        }
+        else{
+            ans = op.find("span").html();
+        }
+        idx = idx + 1;
+        return;
+
+    });
+
+    return "随机点击";
+
+
+}
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+
+function autoDrag(){
+
+    let button = $(".phoenix-button__content");
+
+    let result = $(".question-container").find("[data-cls='result']");
+
+    let option = $(".question-container").find("[data-cls='select-block__item']");
+    let optionList = option.children();
+
+    var ans = "111";
+
+    optionList.each(function(){
+        var op = $(this);
+        log(op.find("span").html());
 
 
 
-    return
+    });
+
+//     let ansList = $(".question-container").find("[data-cls='options__select']");
+
+//     var ans = getAnswer(questionText);
+//     // log(ans);
+
+//     if ( ans != "无答案" ) {
+//         // log(ans+"!="+"无答案")
+//         ansList.children().each(function(){
+//             var option = $(this);
+//             var val = option.find("span").text();
+//             // log(val+" val:ans "+ans);
+//             if (ans == val+"") {
+//                 // log(option.html());
+//                 option.click();
+//             }
+//         });
+//     }
+}
+
+function judgeDragAns(ans1, ans2, ans3){
+
+    var conformList = {
+
+
+    };
+
+    var inconformList = {
+
+
+    };
+
+
+    var res = {
+        "right":"",
+        "false":"",
+    };
+
+
+    return res
 }
 
 function getAnswer(question){
@@ -263,6 +365,10 @@ function getAnswer(question){
         "别人没说“这事不要告诉别人”，就可以告诉别人":"非常不符合",
         "我觉得最要好的朋友也是信不过的":"非常不符合",
         "我不喜欢在公共场合过度表达个人情感":"比较符合",
+        "对我要求最苛刻的人，是我自己":"比较符合",
+        "当别人的风头盖过我时，我就觉得不舒服":"非常不符合",
+        "我相信我能够解决好遇到的问题":"非常符合",
+        "听到跟我不一样的想法，我的第一反应是“没有我的想法好”":"非常不符合",
 
     };
 
