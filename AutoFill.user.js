@@ -23,7 +23,7 @@ div2.innerHTML='<div id="start_start2" class="phoenix-button practice-note-btn" 
 
 
 let textShow=document.createElement("div");
-textShow.innerHTML='<div id="start_show" class="phoenix-button practice-note-btn" style="position: absolute;top: 300px;right: 50px;width: 100px;">展示信息:该题目不存在答案</div>';
+textShow.innerHTML='<div id="start_show" class="phoenix-button practice-note-btn" style="position: absolute;top: 300px;right: 50px;width: 100px;">拖拽答题的模块有问题，谨慎使用</div>';
 
 document.body.append(div);
 document.body.append(div2);
