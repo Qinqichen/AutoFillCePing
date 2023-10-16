@@ -15,7 +15,7 @@
 // ==/UserScript==
 
 let div=document.createElement("div");
-div.innerHTML='<div id="start_start" class="phoenix-button practice-note-btn" style="position: absolute;top: 100px;right: 50px;"><div class="phoenix-button__wraper phoenix-button__wraper--middle phoenix-button__wraper--primary "><div class="phoenix-button__content">开始答题</div></div></div>';
+div.innerHTML='<div id="start_start" class="phoenix-button practice-note-btn" style="position: absolute;top: 100px;right: 50px;"><div class="phoenix-button__wraper phoenix-button__wraper--middle phoenix-button__wraper--primary "><div class="phoenix-button__content">单选答题</div></div></div>';
 
 let div2=document.createElement("div");
 div2.innerHTML='<div id="start_start2" class="phoenix-button practice-note-btn" style="position: absolute;top: 200px;right: 50px;"><div class="phoenix-button__wraper phoenix-button__wraper--middle phoenix-button__wraper--primary "><div class="phoenix-button__content">拖拽答题</div></div></div>';
@@ -47,7 +47,7 @@ var showMessage = $("#start_show");
         messageInfo = randomDrag();
         showMessage.text(messageInfo);
         // $(".phoenix-button__content").click();
-        setTimeout(function() { $(".phoenix-button__content").click(); }, 300)
+        // setTimeout(function() { $(".phoenix-button__content").click(); }, 300)
     };
 
 
